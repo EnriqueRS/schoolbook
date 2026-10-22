@@ -63,7 +63,7 @@ test('un JSON inválido provoca un reintento', async () => {
   const respuestas = ['no es json', JSON.stringify(valido)];
   let llamadas = 0;
   const modelo = async () => respuestas[llamadas++];
-  const quiz = await generateQuiz('lengua', 1, modelo);
+  const quiz = await generateQuiz('lengua', 1, modelo, 'Texto del tema.');
   assert.equal(llamadas, 2);
   assert.equal(quiz.preguntas.length, 8);
 });
@@ -74,7 +74,7 @@ test('dos respuestas inválidas dan un error claro', async () => {
     llamadas++;
     return JSON.stringify({ recortado: false, preguntas: [] });
   };
-  await assert.rejects(() => generateQuiz('lengua', 1, modelo), /no devolvió un test válido/);
+  await assert.rejects(() => generateQuiz('lengua', 1, modelo, 'Texto del tema.'), /no devolvió un test válido/);
   assert.equal(llamadas, 2);
 });
 
@@ -90,7 +90,7 @@ test('un tema inexistente no llama al modelo', async () => {
 
 test('las opciones se barajan y la correcta sigue siendo la misma', async () => {
   const modelo = async () => JSON.stringify(valido);
-  const quiz = await generateQuiz('lengua', 1, modelo);
+  const quiz = await generateQuiz('lengua', 1, modelo, 'Texto del tema.');
   const test1 = quiz.preguntas.find((p) => p.tipo === 'test');
   // El fixture pone siempre "a" como correcta: tras barajar debe seguir siéndolo.
   assert.equal(test1.opciones[test1.correcta], 'a');

@@ -86,12 +86,13 @@ export function shuffleOptions(preguntas) {
   return preguntas;
 }
 
-export async function generateQuiz(bookId, n, model = complete) {
+// `texto` es inyectable para que los tests no dependan de tener el OCR generado.
+export async function generateQuiz(bookId, n, model = complete, texto) {
   const b = book(bookId);
   const t = tema(bookId, n);
   if (!b || !t) throw Object.assign(new Error('Libro o tema inexistente'), { status: 404 });
 
-  const texto = rangeText(bookId, t.from, t.to);
+  texto ??= rangeText(bookId, t.from, t.to);
   if (!texto) {
     throw Object.assign(new Error('No hay texto OCR para este tema: ejecuta npm run ocr'), {
       status: 503,
