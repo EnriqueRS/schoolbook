@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12100e">
+<title>Schoolbook</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+
+<section id="shelf" class="view">
+  <header class="shelf-head">
+    <h1>Schoolbook</h1>
+    <p>5º de Primaria</p>
+  </header>
+  <div id="books" class="grid"></div>
+</section>
+
+<section id="reader" class="view hidden">
+  <div id="spread" class="spread">
+    <img id="pageLeft" class="page" alt="">
+    <img id="pageRight" class="page" alt="">
+    <div class="separator"></div>
+  </div>
+
+  <div id="chrome" class="chrome hidden">
+    <button id="btnBack" class="back" aria-label="Volver a los libros">‹ Libros</button>
+    <span id="chromeTitle" class="chrome-title"></span>
+  </div>
+
+  <button id="btnQuiz" class="pill">Test del tema</button>
+  <button id="btnTutor" class="fab" aria-label="Abrir el tutor">✦</button>
+  <div id="pos" class="pos"></div>
+  <div class="progress"><i id="progressBar"></i></div>
+</section>
+
+<aside id="tutor" class="sheet hidden" aria-label="Tutor">
+  <div class="sheet-head">
+    <div>
+      <h2 id="tutorTitle">Tutor</h2>
+      <button id="btnScope" class="link">Ampliar al tema</button>
+    </div>
+    <button id="btnCloseTutor" class="icon" aria-label="Cerrar">✕</button>
+  </div>
+  <div id="tutorLog" class="log"></div>
+  <div id="chips" class="chips">
+    <button class="chip">Más fácil</button>
+    <button class="chip">Un ejemplo</button>
+    <button class="chip">Pregúntame</button>
+    <button class="chip">¿Para qué sirve?</button>
+  </div>
+  <form id="tutorForm" class="ask">
+    <input id="tutorInput" type="text" placeholder="Escribe tu duda…" autocomplete="off">
+    <button type="submit" class="send" aria-label="Enviar">➤</button>
+  </form>
+</aside>
+
+<section id="quiz" class="sheet full hidden" aria-label="Test">
+  <div class="sheet-head">
+    <h2 id="quizTitle">Test</h2>
+    <button id="btnCloseQuiz" class="icon" aria-label="Cerrar">✕</button>
+  </div>
+  <div id="quizBody" class="quiz-body"></div>
+  <div id="quizFoot" class="quiz-foot"></div>
+</section>
+
+<script src="/app.js" type="module"></script>
+</body>
+</html>

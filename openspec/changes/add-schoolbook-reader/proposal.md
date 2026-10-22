@@ -9,7 +9,7 @@ Este cambio construye un lector propio, ligero y sin interfaz, más dos funcione
 ## What Changes
 
 - **Catálogo de libros y temas**: los 4 libros (Lengua, Matemáticas, Conocimiento del Medio, Religión) se segmentan en **45 temas** (`{libro, tema, título, inicio, fin}`) a partir de las páginas de índice impresas. Las páginas entre temas (repaso trimestral, retos) pertenecen al tema anterior.
-- **Render de páginas**: cada página del PDF se renderiza una vez a WebP (1505×1876, ~150 KB) y se sirve como estático. Se sustituyen 555 MB de PDF por ~109 MB de imágenes.
+- **Render de páginas**: cada página del PDF se renderiza una vez a WebP (1505×1876, ~180 KB) y se sirve como estático. Se sustituyen 555 MB de PDF por ~132 MB de imágenes.
 - **Lector de pliego**: vista de **dos páginas** en tablet apaisada 2000×1200, sin barra de herramientas, con navegación por deslizamiento y teclado, y memoria de la última página por libro.
 - **Texto por página**: pipeline de OCR offline (tesseract `spa` sobre render a 300 dpi) que produce el texto de las 749 páginas como material de trabajo para el modelo. No se muestra al usuario.
 - **Test por tema**: generación con IA de 8 preguntas por tema (6 tipo test de 4 opciones + 2 de respuesta corta con rúbrica), sin tiempo, con corrección inmediata y enlace a la página del libro de cada pregunta.

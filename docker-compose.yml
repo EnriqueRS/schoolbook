@@ -1,0 +1,18 @@
+services:
+  schoolbook:
+    build: .
+    container_name: schoolbook
+    restart: unless-stopped
+    ports:
+      - "8098:8098"
+    env_file: .env
+    environment:
+      # Dentro del contenedor, localhost es el propio contenedor: se apunta al host.
+      # El .env se queda con localhost para cuando se arranca con `npm start`.
+      LITELLM_BASE_URL: http://host.docker.internal:4000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Los PDFs nunca se sirven: solo los leen los scripts de render y OCR.
+      - ./books:/app/books:ro
+      - ./data:/app/data

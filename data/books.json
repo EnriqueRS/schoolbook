@@ -1,0 +1,86 @@
+{
+  "leftPage": "even",
+  "books": [
+    {
+      "id": "lengua",
+      "title": "Lengua Castellana 5º",
+      "pdf": "Lengua Castellana 5 Primaria.pdf",
+      "pages": 242,
+      "leftPage": "even",
+      "temas": [
+        { "n": 1, "title": "¿Cuidamos los mares?", "from": 6, "to": 23 },
+        { "n": 2, "title": "¿Para qué vamos al colegio?", "from": 24, "to": 37 },
+        { "n": 3, "title": "¡No es justo!", "from": 38, "to": 55 },
+        { "n": 4, "title": "¿Respetamos a los animales?", "from": 56, "to": 79 },
+        { "n": 5, "title": "¿Cómo es tu localidad?", "from": 80, "to": 97 },
+        { "n": 6, "title": "¿Qué deporte haces?", "from": 98, "to": 111 },
+        { "n": 7, "title": "¿Te gusta la música?", "from": 112, "to": 129 },
+        { "n": 8, "title": "¿Protegemos la naturaleza?", "from": 130, "to": 155 },
+        { "n": 9, "title": "¿Qué quieres ser?", "from": 156, "to": 173 },
+        { "n": 10, "title": "¿Qué comemos?", "from": 174, "to": 187 },
+        { "n": 11, "title": "¡Qué valiente!", "from": 188, "to": 205 },
+        { "n": 12, "title": "¿De dónde eres?", "from": 206, "to": 225 }
+      ]
+    },
+    {
+      "id": "matematicas",
+      "title": "Matemáticas 5º",
+      "pdf": "Matematicas 5 Primaria.pdf",
+      "pages": 233,
+      "leftPage": "even",
+      "temas": [
+        { "n": 1, "title": "Los números naturales", "from": 6, "to": 23 },
+        { "n": 2, "title": "La multiplicación y las potencias", "from": 24, "to": 39 },
+        { "n": 3, "title": "La división. Múltiplos y divisores", "from": 40, "to": 57 },
+        { "n": 4, "title": "Las figuras geométricas", "from": 58, "to": 79 },
+        { "n": 5, "title": "Las fracciones. Comparación", "from": 80, "to": 95 },
+        { "n": 6, "title": "Las fracciones. Suma y resta", "from": 96, "to": 113 },
+        { "n": 7, "title": "Los números decimales", "from": 114, "to": 131 },
+        { "n": 8, "title": "Operaciones con números decimales", "from": 132, "to": 155 },
+        { "n": 9, "title": "Las unidades de medida", "from": 156, "to": 173 },
+        { "n": 10, "title": "Áreas de figuras planas", "from": 174, "to": 191 },
+        { "n": 11, "title": "El sistema sexagesimal", "from": 192, "to": 209 },
+        { "n": 12, "title": "Probabilidad y estadística", "from": 210, "to": 231 }
+      ]
+    },
+    {
+      "id": "conocimiento",
+      "title": "Conocimiento del Medio 5º",
+      "pdf": "Conocimiento del Medio 5 Primaria.pdf",
+      "pages": 176,
+      "leftPage": "even",
+      "temas": [
+        { "n": 1, "title": "Los seres vivos", "from": 5, "to": 16 },
+        { "n": 2, "title": "El sistema nervioso y los sentidos", "from": 17, "to": 28 },
+        { "n": 3, "title": "El aparato locomotor", "from": 29, "to": 38 },
+        { "n": 4, "title": "La salud", "from": 39, "to": 52 },
+        { "n": 5, "title": "El relieve de España", "from": 53, "to": 64 },
+        { "n": 6, "title": "Los climas de España", "from": 65, "to": 76 },
+        { "n": 7, "title": "La organización de España", "from": 77, "to": 88 },
+        { "n": 8, "title": "La población de España", "from": 89, "to": 104 },
+        { "n": 9, "title": "La Edad Media", "from": 105, "to": 118 },
+        { "n": 10, "title": "La Edad Moderna", "from": 119, "to": 132 },
+        { "n": 11, "title": "La materia", "from": 133, "to": 144 },
+        { "n": 12, "title": "La sociedad de la información", "from": 145, "to": 159 }
+      ]
+    },
+    {
+      "id": "religion",
+      "title": "Religión Católica 5º",
+      "pdf": "Religion Catolica 5 Primaria.pdf",
+      "pages": 98,
+      "leftPage": "even",
+      "temas": [
+        { "n": 1, "title": "Mujer, sociedad y religión", "from": 6, "to": 13 },
+        { "n": 2, "title": "Me encuentro con Dios", "from": 14, "to": 21 },
+        { "n": 3, "title": "Practicamos los valores cristianos", "from": 22, "to": 33 },
+        { "n": 4, "title": "Construyo la paz", "from": 34, "to": 41 },
+        { "n": 5, "title": "Celebramos fiestas", "from": 42, "to": 49 },
+        { "n": 6, "title": "Cumplimos las normas", "from": 50, "to": 61 },
+        { "n": 7, "title": "Conocemos nuestros derechos", "from": 62, "to": 69 },
+        { "n": 8, "title": "Nos comunicamos", "from": 70, "to": 77 },
+        { "n": 9, "title": "Conocemos el arte religioso", "from": 78, "to": 89 }
+      ]
+    }
+  ]
+}

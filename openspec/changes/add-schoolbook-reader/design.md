@@ -7,13 +7,13 @@ Ver `proposal.md` para la motivación y `specs/` para el comportamiento exigido.
 Lo que condiciona el diseño, ya verificado sobre los ficheros reales:
 
 - Los 4 PDFs son **libros digitales exportados con cairo**: las páginas son vectores e imágenes a 96 ppi, **sin capa de texto y sin fuentes embebidas**. `pdftotext` devuelve vacío.
-- Consecuencia buena: el render es nítido a cualquier resolución, así que un render a 145 dpi pesa ~150 KB y sirve para una pantalla de 2000 × 1200.
+- Consecuencia buena: el render es nítido a cualquier resolución, así que un render a 145 dpi pesa ~180 KB y sirve para una pantalla de 2000 × 1200.
 - Consecuencia mala: no hay texto que enviar al modelo. Todo el contenido para la IA tiene que venir de OCR.
 - Las páginas del PDF **coinciden** con el número impreso (comprobado en Lengua, Matemáticas, Conocimiento y Religión).
 - La máquina no tiene GPU (8 núcleos, 31 GB). El modelo elegido vive en el proxy LiteLLM local (`:4000`), no en Ollama.
 - Uso doméstico en red local, sin cuentas ni progreso: no hay datos que justifiquen una base de datos.
 
-Medidas tomadas antes de escribir esto: render a 145 dpi → WebP q82 = 134–164 KB/página (total ~109 MB); OCR con `tesseract -l spa` a 300 dpi = 3,3 s/página.
+Medidas tomadas antes de escribir esto: render a 145 dpi → WebP q82 = 182 KB/página de media, 132 MB en total (la estimación inicial de 109 MB se quedó corta); OCR con `tesseract -l spa` a 300 dpi = 3,3 s/página.
 
 ## Goals / Non-Goals
 
@@ -39,7 +39,7 @@ Medidas tomadas antes de escribir esto: render a 145 dpi → WebP q82 = 134–16
 Las dos ventajas de PDF.js (seleccionar texto y buscar dentro) son **inexistentes** aquí porque no hay capa de texto; a cambio arrastra 92–211 MB por libro y un visor con controles que va justo en contra del requisito de sencillez. Se renderiza una vez a WebP y el cliente compone el pliego con dos `<img>`.
 
 - Render: `pdftoppm -r 145 -png` + `convert -quality 82 -define webp:method=6`.
-- Guardar **páginas sueltas**, no pliegos compuestos: un asset por página, ~150 KB, y el emparejamiento es una decisión de presentación (y de paridad por libro) que así puede corregirse sin volver a renderizar. Componer en CSS son tres líneas.
+- Guardar **páginas sueltas**, no pliegos compuestos: un asset por página, ~180 KB, y el emparejamiento es una decisión de presentación (y de paridad por libro) que así puede corregirse sin volver a renderizar. Componer en CSS son tres líneas.
 - Formato WebP sin alternativas en AVIF: el ahorro no compensa el coste de codificación en CPU para 749 páginas.
 
 ### D2. La tabla de temas es un fichero versionado, no un cálculo
@@ -64,6 +64,8 @@ Generar el texto en el momento de pedir un test metería 3 s/página × 14 pági
 - A 300 dpi y `--psm 3`, el texto de Lengua sale prácticamente limpio.
 - Ruido conocido y aceptado: los bullets decorativos se convierten en `e`, `+`, `*` y en Matemáticas se desordena el orden de lectura de las columnas.
 - Si el test de Matemáticas sale pobre, la mejora prevista es reconstruir el orden con `tesseract --tsv` y las coordenadas; no se contempla mandar imágenes a un modelo de visión como primera opción, porque el modelo elegido no es multimodal y añadiría coste y latencia.
+- **Medido al ejecutarlo**: 749 páginas en 50–105 min por libro corriendo los 4 en paralelo (compiten por los 8 núcleos; en serie habría sido ~40 min por libro), con 3,0 MB de texto en total.
+- **Decisión sobre `--tsv`: no hace falta por ahora.** El test del tema 4 de Matemáticas ("Las figuras geométricas") salió con las 8 preguntas correctas y ancladas a las páginas 60–67, pese al desorden de columnas. Se revisará solo si algún tema concreto da preguntas raras.
 
 ### D5. Prompts: el rango de páginas es la unidad de trabajo
 
@@ -95,7 +97,7 @@ El cliente nunca ve la clave: habla con `/api/quiz` y `/api/chat`, y el servidor
 - **El modelo devuelve JSON inválido o incompleto** → mitigación: validación en servidor y un reintento; si falla, error comprensible en vez de test roto.
 - **Latencia del proveedor en el chat** → mitigación: streaming, contexto pequeño por defecto (un pliego) y ampliación explícita al tema.
 - **La clave se filtra** → mitigación: solo servidor, `.env` ignorado por git, y rotación de la clave que ya se compartió por chat antes de desplegar.
-- **Los derivados ocupan espacio** (~109 MB imágenes + 1,2 MB texto) → mitigación: los scripts son reejecutables y los derivados están fuera de git; borrar `data/pages/` y regenerar es barato.
+- **Los derivados ocupan espacio** (132 MB imágenes + 1,2 MB texto) → mitigación: los scripts son reejecutables y los derivados están fuera de git; borrar `data/pages/` y regenerar es barato.
 - **El libro completo nunca se expone** → mitigación: `books/` fuera de git y del servidor estático; solo se publican las páginas renderizadas.
 
 ## Migration Plan
