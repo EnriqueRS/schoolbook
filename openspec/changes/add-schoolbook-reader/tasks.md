@@ -62,7 +62,7 @@
 
 - [ ] 8.1 Probar el lector en la tablet real de 2000 × 1200 pasando 20 pliegos seguidos; verificar que no hay recortes, saltos ni desplazamientos del pliego
 - [x] 8.2 Revisar la sencillez de la pantalla de lectura; verificar que no hay controles permanentes más allá del indicador y de las entradas al test y al tutor
-- [ ] 8.3 Repetir el arranque completo siguiendo solo el README en un directorio limpio; verificar que render, OCR y servidor funcionan sin pasos no documentados
+- [x] 8.3 Repetir el arranque completo siguiendo solo el README en un directorio limpio; verificar que render, OCR y servidor funcionan sin pasos no documentados
 
 ## Workflow follow-up
 
